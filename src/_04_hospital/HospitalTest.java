@@ -43,7 +43,7 @@ public class HospitalTest extends TestCase {
 
 		GeneralPractitioner testGP = new GeneralPractitioner();
 		assertEquals(true, testGP.makesHouseCalls());
-		assertEquals(false, testSurgeon.makesHouseCalls());
+		assertEquals(false, ( testSurgeon).makesHouseCalls());
 		assertEquals(false, testDoctor.makesHouseCalls());
 	}
 
@@ -65,10 +65,10 @@ public class HospitalTest extends TestCase {
 		testPatient.checkPulse();
 		assertEquals(true, testPatient.feelsCaredFor());
 	}
-
-	/* Doctors work on their Patients by checking their pulses. */
+//
+//	/* Doctors work on their Patients by checking their pulses. */
 	public void testDoctorsWork() throws Exception {
-		Doctor testDoctor = new GeneralPractitioner();
+		Doctor testDoctor = (Doctor) new GeneralPractitioner();
 		Patient max = new Patient();
 		Patient macky = new Patient();
 		testDoctor.assignPatient(max);
@@ -97,9 +97,18 @@ assertTrue(testDoctor.getPatients().size() == 3);
 
 	public void test8Patients() throws Exception {
 		// TODO: add 3 doctors to hospital
-
+		testHospital.addDoctor(new GeneralPractitioner());
+		testHospital.addDoctor(new GeneralPractitioner());
+		testHospital.addDoctor(new GeneralPractitioner());
 		// TODO: add 8 patients to hospital
-
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
 		// hospital assigns patients to doctors
 		testHospital.assignPatientsToDoctors();
 		// hospital.getDoctors shows doctors have 3, 3, 2 patients
