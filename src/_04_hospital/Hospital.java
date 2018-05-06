@@ -26,11 +26,23 @@ public void addPatient(Patient patient) {
 		return doctors;
 	}
 
-	public void assignPatientsToDoctors() {
+	public void assignPatientsToDoctors() throws DoctorFullException {
 		// TODO Auto-generated method stub
-		for (Doctor doctor : doctors) {
-			
-		}
+		int PPD = 0;
+		int WDO = 0;
+		for (int i = 0; i < patients.size(); i++) {
+			if(PPD < 3) {
+				
+					doctors.get(WDO).assignPatient(patients.get(i));
+					PPD++;
+				
+			} else {
+				WDO++;
+				PPD = 0;
+				doctors.get(WDO).assignPatient(patients.get(i));
+				PPD++;
+			}
+		} 
 	}
 
 }
